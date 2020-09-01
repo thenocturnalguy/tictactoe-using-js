@@ -1,0 +1,52 @@
+:root {
+	--page-width			: 100%;
+	--page-height			: 100%;
+	--primary-font-color	: #444;
+	--secondary-font-color	: #fff;
+	--primary-font-family	: Arial;
+	--primary-font-size		: 1.5em;
+}
+* {
+	margin 					: 0;
+	padding 				: 0;
+	-webkit-box-sizing		: border-box;
+	-moz-box-sizing			: border-box;
+	-ms-box-sizing			: border-box;
+	-o-box-sizing			: border-box;
+	box-sizing 				: border-box;
+}
+body, html {
+	width 					: var(--page-width);
+	height 					: var(--page-height);
+	font-family 			: var(--primary-font-family);
+	font-size 				: var(--primary-font-size);
+	color 					: var(--primary-font-color);
+}
+.flex {
+	display 				: -webkit-box;
+	display 				: -moz-box;
+	display 				: -webkit-flex;
+	display 				: -ms-flexbox;
+	display 				: flex;
+}
+.justify-content-center {
+	-webkit-justify-content : center;
+	-moz-justify-content 	: center;
+	-ms-justify-content 	: center;
+	-o-justify-content 		: center;
+	justify-content 		: center;
+}
+.align-items-center {
+	-webkit-align-items 	: center; 
+	-moz-align-items 		: center; 
+	-ms-align-items 		: center; 
+	-o-align-items 			: center; 
+	align-items 			: center; 
+}
+.container {
+	width 					: inherit;
+	height 					: inherit;  
+}
+#board {
+
+}
