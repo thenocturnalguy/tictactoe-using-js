@@ -6,14 +6,24 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<meta name="author" content="Rahul Gupta(thenocturnalguy)">
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<div class="container flex justify-content-center align-items-center">
+			<div id="players">
+				<div class="player" id="playerA">
+					<div class="score"></div>
+					<div class="play">
+						<button id="move">Move</button>
+					</div>
+				</div>
+				<div class="player" id="playerB"></div>
+			</div>
 			<div id="board">
 				<table>
 					<tr>
-						<td><i></i></td>
-						<td><i></i></td>
+						<td><i>x</i></td>
+						<td><i>o</i></td>
 						<td><i></i></td>
 					</tr>
 					<tr>
