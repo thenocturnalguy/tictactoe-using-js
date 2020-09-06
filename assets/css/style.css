@@ -1,3 +1,41 @@
+/* Fonts */
+/* hebrew */
+@font-face {
+  font-family 				: 'Varela Round';
+  font-style 				: normal;
+  font-weight 				: 400;
+  font-display 				: swap;
+  src 						: local('Varela Round Regular'), local('VarelaRound-Regular'), url(https://fonts.gstatic.com/s/varelaround/v12/w8gdH283Tvk__Lua32TysjIfpcuPP9g.woff2) format('woff2');
+  unicode-range 			: U+0590-05FF, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* vietnamese */
+@font-face {
+  font-family 				: 'Varela Round';
+  font-style 				: normal;
+  font-weight 				: 400;
+  font-display 				: swap;
+  src 						: local('Varela Round Regular'), local('VarelaRound-Regular'), url(https://fonts.gstatic.com/s/varelaround/v12/w8gdH283Tvk__Lua32TysjIfqMuPP9g.woff2) format('woff2');
+  unicode-range 			: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family 				: 'Varela Round';
+  font-style 				: normal;
+  font-weight 				: 400;
+  font-display 				: swap;
+  src 						: local('Varela Round Regular'), local('VarelaRound-Regular'), url(https://fonts.gstatic.com/s/varelaround/v12/w8gdH283Tvk__Lua32TysjIfqcuPP9g.woff2) format('woff2');
+  unicode-range 			: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family 				: 'Varela Round';
+  font-style 				: normal;
+  font-weight 				: 400;
+  font-display 				: swap;
+  src 						: local('Varela Round Regular'), local('VarelaRound-Regular'), url(https://fonts.gstatic.com/s/varelaround/v12/w8gdH283Tvk__Lua32TysjIfp8uP.woff2) format('woff2');
+  unicode-range 			: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
 	--page-width			: 100%;
 	--page-height			: 100%;
@@ -21,6 +59,11 @@ body, html {
 	font-family 			: var(--primary-font-family);
 	font-size 				: var(--primary-font-size);
 	color 					: var(--primary-font-color);
+	background 				: #0f0c29;  /* fallback for old browsers */
+	background 				: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+	background 				: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
 }
 .flex {
 	display 				: -webkit-box;
@@ -29,12 +72,26 @@ body, html {
 	display 				: -ms-flexbox;
 	display 				: flex;
 }
+.column {
+	-webkit-flex-direction	: column;
+	-moz-flex-direction		: column;
+	-ms-flex-direction		: column;
+	-o-flex-direction		: column;
+	flex-direction 			: column;
+}
 .justify-content-center {
 	-webkit-justify-content : center;
 	-moz-justify-content 	: center;
 	-ms-justify-content 	: center;
 	-o-justify-content 		: center;
 	justify-content 		: center;
+}
+.justify-content-spacebetween {
+	-webkit-justify-content : space-between;
+	-moz-justify-content 	: space-between;
+	-ms-justify-content 	: space-between;
+	-o-justify-content 		: space-between;
+	justify-content 		: space-between;
 }
 .align-items-center {
 	-webkit-align-items 	: center; 
@@ -48,27 +105,87 @@ body, html {
 	height 					: inherit;  
 }
 #board {
-	width 					: 300px;
-	height 					: 300px;
+	width 					: 380px;
+	height 					: 380px;
 }
 #board table {
 	width					: inherit;
 	height					: inherit;
 }
-#board table,
+/*#board table,*/
 #board tr,
 #board th,
 #board td {
-	border 					: 5px solid rgb(255, 167, 0);
+	border 					: 6px solid rgb(157, 142, 255);
 	border-collapse 		: collapse;
+	box-shadow 				: 0 0 30px 1px rgba(88, 26, 225, 0.28);
+	border-radius 			: 15px;  
 }
 #board td {
-	width 					: calc(300px / 3 - 5px);
-	height 					: calc(300px / 3 - 5px);
+	width 					: calc(380px / 3 - 6px);
+	height 					: calc(380px / 3 - 6px);
 	text-align 				: center;
+	cursor 					: pointer;
 }
-#board td i {
-	font-size 				: 70px;
+#board td:hover {
+	box-shadow 				: 0 0 30px 5px rgb(85, 21, 227);
+	transition 				: 100ms linear all;
+}
+#board td svg {
 	color 					: rgb(255, 167, 0);
-	font-style 				: normal;
+	width 					: 50px;
+	height 					: 50px;   
+}
+.players {
+	width 					: 50%; 
+}
+.players .player {
+	flex 					: 1;
+	text-align 				: center; 
+}
+.player .name {
+	font-size 				: 1.2rem;
+	color 					: rgb(241, 241, 253);
+	text-shadow 			: 0 0 5px rgb(127, 100, 255);
+}
+.player .points {
+	font-size 				: .8rem;
+	color 					: rgb(81, 255, 198);
+	font-weight 			: bolder; 
+}
+.controls {
+	width 					: 380px;
+	margin 					: 30px 0;
+}
+.btn {
+	border 					: none;
+	cursor 					: pointer; 
+}
+.btn-move {
+	padding 				: 12px 50px;
+	width 					: 300px;
+	font-size 				: 20px;
+	background 				: #FF416C;  /* fallback for old browsers */
+	background 				: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);  /* Chrome 10-25, Safari 5.1-6 */
+	background 				: linear-gradient(to right, #FF4B2B, #FF416C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	color 					: white;
+	font-weight 			: bolder;
+	border-radius 			: 50px;
+	font-family 			: var(--primary-font-family);
+}
+.btn-move  svg {
+	width 					: 30px;
+	height 					: 30px;
+	margin-right 			: 5px;
+}
+.btn-restart {
+	padding 				: 12px;
+	border-radius 			: 50px; 
+	color 					: white;
+	background 				: transparent;
+	border 					: 2px solid white;
+}
+.btn-restart svg {
+	width 					: 30px;
+	height 					: 30px;
 }

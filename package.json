@@ -1,0 +1,25 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "The javascript implementation of the classic multiplayer game, Tictactoe.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thenocturnalguy/tictactoe.git"
+  },
+  "keywords": [
+    "tictactoe",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "Rahul gupta (thenocturnalguy)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thenocturnalguy/tictactoe/issues"
+  },
+  "homepage": "https://github.com/thenocturnalguy/tictactoe#readme"
+}
