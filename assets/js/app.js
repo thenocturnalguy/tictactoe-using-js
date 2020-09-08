@@ -8,7 +8,7 @@ let tictactoe = (function(dimension) {
 	}, symbol = {
 		cross: "<svg style=\"width: 60px; height: 60px\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"times\" class=\"svg-inline--fa fa-times fa-w-11\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 352 512\"><path fill=\"currentColor\" d=\"M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z\"></path></svg>",
 		zero: "<svg aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"dot-circle\" class=\"svg-inline--fa fa-dot-circle fa-w-16\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path fill=\"currentColor\" d=\"M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z\"></path></svg>"
-	}, currentPlayer = null, playerDOM = document.querySelector('#playersArea');
+	}, currentPlayer = null, playerDOM = document.querySelector('#players'), controlsDOM = document.querySelector('#controls');
 
 	const Board = function(dimension) {
 		this.dimension = dimension;
@@ -47,7 +47,9 @@ let tictactoe = (function(dimension) {
 				return false;
 			}
 			this.cells[currentPlayer.currentMove.x][currentPlayer.currentMove.y].innerText = null;
-		} 
+		} else if (this.moves[cell.getAttribute('data-row')][cell.getAttribute('data-column')]) {
+			return false;
+		}
 		return true;
 	}
 
@@ -58,7 +60,10 @@ let tictactoe = (function(dimension) {
 			cell.innerHTML = currentPlayer.symbol;
 			currentPlayer.currentMove.x = cell.getAttribute('data-row');
 			currentPlayer.currentMove.y = cell.getAttribute('data-column');
-		} else alert("Wrong Move! Please check.");
+		} else {
+			modal.init('_Invalid');
+			modal.on();
+		}
 	}
 
 	Board.prototype._bindHandler = function() {
@@ -116,12 +121,17 @@ let tictactoe = (function(dimension) {
 	}
 
 	Player.prototype._move = function(board) {
-		board.moves[this.currentMove.x][this.currentMove.y] = this.symbol;
-		this.lastMove.x = this.currentMove.x;
-		this.lastMove.y = this.currentMove.y;
-		this.currentMove = {
-			x: null,
-			y: null
+		if (this.currentMove.x && this.currentMove.y) {
+			board.moves[this.currentMove.x][this.currentMove.y] = this.symbol;
+			this.lastMove.x = this.currentMove.x;
+			this.lastMove.y = this.currentMove.y;
+			this.currentMove = {
+				x: null,
+				y: null
+			}
+		} else {
+			modal.init('_Invalid');
+			modal.on();
 		}
 	}
 
@@ -191,7 +201,8 @@ let tictactoe = (function(dimension) {
 
 		if (_hasWon(currentPlayer)) {
 			currentPlayer._incrementScore();
-			alert("Congratulations! You have won. Keep it up " + currentPlayer.name);
+			modal.init('_Win');
+			modal.on({name: currentPlayer.name});
 			_printScore();
 			board._unbindHandler();
 		} else {
@@ -225,8 +236,17 @@ let tictactoe = (function(dimension) {
 		if (x == dimension - y - 1) 
 			player.sums.diagonal.right += 1;
 	}
-	init();
+
 	/* Game Controls */
-	document.querySelector('#move').onclick = play;
-	document.querySelector('#restart').onclick = restart;
+	init();
+	controlsDOM.querySelector('#move').onclick = play;
+	controlsDOM.querySelector('#restart').onclick = function() {
+		restart();
+		modal.init('_Reset');
+		modal.on();
+	};
+	controlsDOM.querySelector('#stats').onclick = function() {
+		modal.init('_Stats');
+		modal.on();
+	};
 })(3);

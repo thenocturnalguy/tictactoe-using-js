@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Tic Tac Toe</title>
+		<title>TicTacToe - The classic multiplayer game</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<meta name="author" content="Rahul Gupta(thenocturnalguy)">
+		<meta name="revised" content="08.09.2020">
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	</head>
 	<body>
 		<div class="container flex justify-content-center align-items-center column">
-			<div class="players flex justify-content-spacebetween" id="playersArea">
+			<div class="players flex justify-content-spacebetween" id="players">
 				<div class="player" id="playerA">
 					<p class="name">Rahul</p>
 					<p class="points">0p</p>
@@ -19,8 +20,8 @@
 					<p class="points">0p</p>
 				</div>
 			</div>
-			<span class="controls flex justify-content-spacebetween align-items-center">
-				<button class="btn btn-icon flex justify-content-center align-items-center" id="restart">
+			<span class="controls flex justify-content-spacebetween align-items-center" id="controls">
+				<button class="btn btn-icon flex justify-content-center align-items-center" id="stats">
 					<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="clipboard-list" class="svg-inline--fa fa-clipboard-list fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M336 64h-80c0-35.3-28.7-64-64-64s-64 28.7-64 64H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM96 424c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24zm0-96c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24zm0-96c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24zm96-192c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24zm128 368c0 4.4-3.6 8-8 8H168c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-96c0 4.4-3.6 8-8 8H168c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-96c0 4.4-3.6 8-8 8H168c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16z"></path></svg>
 				</button>
 				<button id="move" class="flex align-items-center justify-content-center btn btn-move">

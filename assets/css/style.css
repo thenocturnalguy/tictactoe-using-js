@@ -220,6 +220,9 @@ body, html {
 .modal .modal-content {
 	
 }
-.modal #_Win {
+.modal #_Win,
+.modal #_Invalid,
+.modal #_Reset,
+.modal #_Stats {
 	padding: 50px 40px;
 }
