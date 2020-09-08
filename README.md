@@ -1,2 +1,2 @@
 # tictactoe
-A classic multiplayer tictactoe game with javascript.
+The classic multiplayer tictactoe game with javascript.
